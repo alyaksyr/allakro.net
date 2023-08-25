@@ -1,0 +1,153 @@
+
+@import '/node_modules/tom-select/dist/css/tom-select.default.css';
+header{
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+.compte-content{
+    min-height: 100vh;
+    display: flex;
+    background-color: #fafafa;
+}
+.compte-sidebar-menu {
+    width: 256px;
+    height: 100%;
+    display: block;
+    overflow: auto;
+    position: fixed;
+    background: #fff;
+    padding-top: 16px;
+    border-right: 1px solid #e0e0e0;
+
+}
+
+.sidebar-tabmenu{
+    margin: 0;
+    padding: 0;
+}
+.list-tabmenu{
+    margin: 0;
+    padding: 0;
+}
+
+.tabmenu {
+    color: #fff;
+    list-style: none;
+    position: relative;
+}
+.tabmenu-item{
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.tabmenu-item-0{
+    width: 100%;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sidebar-menu-item-root{
+    color: inherit;
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    display: inline-flex;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    align-items: center;
+    border-radius: 0;
+    vertical-align: middle;
+    justify-content: center;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.tabmenu-item-1{
+    color: rgba(0, 0, 0, 0.92);
+    display: block;
+    padding: 8px 0px 8px 16px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    text-align: left;
+    font-weight: 400;
+    border-radius: 0 24px 24px 0;
+}
+
+.tabsubmenu{
+    padding: 0;
+}
+.tabmenu-item-active{
+    background-color: #e0e0e0;;
+}
+.list-tabsubmenu{
+    flex-direction: column;
+    display: flex;
+    overflow: hidden;
+    min-height: 100px;
+}
+.tabsubmenu-content{
+    overflow-x: scroll;
+    scrollbar-width: none;
+    display: flex;
+    flex: 1 1 auto;
+    display: inline-block;
+    position: relative;
+}
+.tabsubmenu-item-0{
+    color: rgba(0, 0, 0, 0.92);
+    opacity: 1;
+    position: relative;
+    font-size: 1rem;
+    text-align: left;
+    font-weight: 400;
+    line-height: 2.25rem;
+    padding-left: 48px;
+    text-transform: none;
+}
+.tabsubmenu-item-0::before{
+    top: 0;
+    left: 32px;
+    width: 2px;
+    height: 100%;
+    content: "";
+    position: absolute;
+    background-color: #e0e0e0;
+}
+.tabsubmenu-item-1{
+    align-items: flex-start;
+}
+.submenu-item-inner{
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.compte-main-content{
+    margin-left: 257px;
+    padding-top: 57px;
+    z-index: 0;
+    position: relative;
+    flex-grow: 1;
+    max-width: 100vw;
+}
+main{
+    clear: both;
+    display: block;
+}
+.account-content{
+    @media (min-width:1024px) {
+        width: 768px;
+    }
+    @media (min-width:1248px) {
+        width: 968px;
+    }
+}

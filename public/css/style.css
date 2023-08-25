@@ -1,0 +1,138 @@
+
+
+html, body { 
+    height: 100%; 
+  }
+  
+  [dir="ltr"] body {
+    text-align: left;
+    direction: ltr;
+  }
+  
+  body { 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #3d464d;
+    background: #fff;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow-y: scroll;
+  }
+
+  .dropdown-menu{
+    min-width: 15rem;
+    right: 0;
+    left: -5.25rem;
+  }
+  .auth-user.dropdown-menu{
+      left: -7.125rem;
+  }
+
+  .bg-green{
+    background: #00a54e;
+    color: #fff;
+  }
+
+  .bg-indigo{
+    background: #941e85;
+    color: #fff;
+    min-height: 80px;
+    bottom: 0px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+
+  }
+
+  .last-news-title{
+    display: block;
+    padding: 20px 30px;
+    background-color: #941e85;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .last-news-content ul{
+    list-style: none;
+  }
+
+  #contenu-flash{
+    margin: 0;
+    padding:10px 0px 0px 0px ;
+    height: 350px;
+  }
+  /* .nav-link{
+    color: #E4E7ED;
+  } */
+  
+  .homeContent{
+    margin-top: 30px;
+  }
+
+
+  .main{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .home-content{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-content section{
+    margin-top: 20px;
+  }
+
+  footer{
+    margin-top: 20px;
+  }
+
+  .last-news-content{
+    position: relative;
+    display: block;
+    padding: 0 5px;
+    border-top: 0;
+    border-right: 4px solid #d2d6de;
+    border-bottom: 4px solid #FFF;
+    border-left: 4px solid #d2d6de;
+    max-height: 350px;
+  }
+
+.last-news-bottom{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 10px;
+  background-color: #F1EDE5;
+  justify-content: space-between;
+  border-top: 1px solid #CCC;
+}
+
+#contenu-flash li{
+  display: block;
+  background-color: #3d464d;
+  border-radius:10px;
+  padding: 5px 10px;
+  margin-top: 15px;
+}
+.card-action a{
+  color: #941e85;
+  text-align: center;
+  text-transform: none;
+  font-size: 17px;
+  margin: 0 !important;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+ 
