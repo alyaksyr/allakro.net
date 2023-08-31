@@ -42,9 +42,20 @@
           class="fas fa-th-large"></i></a>
     </li>
   </ul>
-  <a href="/home" class="btn btn-primary">
-    Retour à la page d'accueil 
-  </a>
+  @auth
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <form action="{{route('logout')}}" method="post">
+            @csrf 
+            @method('delete')
+            <button class="nav-link">
+              Deconnexion
+            </button>
+        </form>
+      </li>
+    </ul>
+  @endauth
+  
 </nav>
 <!-- /.navbar -->
 
@@ -54,7 +65,7 @@
       $route = request()->route()->getName()
     @endphp
   <!-- Brand Logo -->
-  <a href="#" class="brand-link">
+  <a href="{{ route('home') }}" class="brand-link">
     <span class="brand-text font-weight-bold">Allakro.net</span>
   </a>
 
@@ -84,6 +95,22 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ route('admin.competences.index')}}" @class([ 'nav-link', 'active' => str_contains($route,  'competences.') ]) >
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Compétences
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.interets.index')}}" @class([ 'nav-link', 'active' => str_contains($route,  'interets.') ]) >
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Centres d'intérêts
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route('admin.pharmacies.index')}}" @class([ 'nav-link', 'active' => str_contains($route,  'pharmacies.')]) >
             <i class="nav-icon fas fa-th"></i>
             <p>
@@ -96,6 +123,22 @@
             <i class="nav-icon fas fa-th"></i>
             <p>
               Hôpitaux
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.epidemies.index')}}" @class([ 'nav-link', 'active' => str_contains($route,  'epidemies.')]) >
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Epidemies
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.projets.index')}}" @class([ 'nav-link', 'active' => str_contains($route,  'projets.')]) >
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Projets
             </p>
           </a>
         </li>
@@ -139,7 +182,7 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item menu-open">
+        <li class="nav-item">
           <a href="#" class="nav-link">
             <p>
               Paramètres
@@ -151,12 +194,6 @@
               <a href="{{ route('admin.bons.index')}}" @class([ 'nav-link', 'active' => str_contains($route,  'bons.')]) >
                 <i class="fas fa-th nav-icon"></i>
                 <p>Bons médicaux</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ route('admin.services.index')}}" @class([ 'nav-link', 'active' => str_contains($route,  'services.')]) >
-                <i class="fas fa-th nav-icon"></i>
-                <p>Services médicaux</p>
               </a>
             </li>
             <li class="nav-item">
@@ -211,8 +248,11 @@
       <section class="content">
         <div class="container-fluid">
           @if(session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
               {{ session('success') }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
           @endif
 
@@ -235,6 +275,9 @@
     
 </div>
 <footer class="main-footer bg-indigo0">
+  <script>
+    $(".alert").alert('dispose')
+  </script>
   <div class="container">
     <em>&copy; 2022</em>
   </div>

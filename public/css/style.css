@@ -21,15 +21,6 @@ html, body {
     overflow-y: scroll;
   }
 
-  .dropdown-menu{
-    min-width: 15rem;
-    right: 0;
-    left: -5.25rem;
-  }
-  .auth-user.dropdown-menu{
-      left: -7.125rem;
-  }
-
   .bg-green{
     background: #00a54e;
     color: #fff;
@@ -44,6 +35,11 @@ html, body {
     margin-right: auto;
     margin-left: auto;
 
+  }
+
+  .b-b {
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid rgba(0,0,0,.125);
   }
 
   .last-news-title{

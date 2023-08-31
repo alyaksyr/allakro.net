@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PharmacieFormRequest;
 use App\Models\Bon;
 use App\Models\Pharmacie;
+use App\Models\PharmacieGarde;
 use Illuminate\Http\Request;
 
 class PharmacieController extends Controller
@@ -43,6 +44,16 @@ class PharmacieController extends Controller
         $pharmacie->bons()->sync($request->validated('bons'));
         return to_route('admin.pharmacies.index')->with('success', 'L\'enrégistement a bien été créé !');
     }
+
+    public function show($id)
+    {
+        return view('admin.pharmacies.garde', [
+            'garde' => new PharmacieGarde(),
+            'pharmacie' => Pharmacie::find($id),
+            'gardes' => Pharmacie::find($id)->gardes()->orderBy('created_at', 'desc')->paginate(25),
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

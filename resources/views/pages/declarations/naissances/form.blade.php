@@ -6,12 +6,11 @@
 
 @section('content')
 
-<form action="{{ route('declaration.store', $naissance) }}" method="post">
+<form action="{{ route('compte.declaration.store', $naissance) }}" method="post">
 
     @csrf 
     @method('post')
 
-    <input type="text" id="_user_id" name="_user_id", hidden value="1">
     <input type="text" id="_type" name="_type", hidden value="naissance">
     <div class="row">
         @include('shared.input', ['class' => 'col', 'label' => 'Nom et prénoms du bébé', 'name' => 'nom', 'type' => 'text', 'value' => $naissance->nom])

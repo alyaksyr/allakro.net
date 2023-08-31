@@ -25,8 +25,10 @@ class ServiceHopitalFormRequest extends FormRequest
     {
         return [
 
-            'libelle' => ['required', 'min:2'],
-            'detail' => ['required'],
+            'libelle' => ['required'],
+            'prestation' => [],
+            'contact' => [],
+            'responsable' => [],
         ];
     }
 }

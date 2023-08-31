@@ -5,11 +5,13 @@
 @section('content')
 
 
+
 <div class="d-flex mb-2 justify-content-end align-item-end">
-    <a href="{{ route('admin.gardes.create')}}" class="btn btn-primary">
+    <a href="{{ route('admin.gardes.create', $pharmacie)}}" class="btn btn-primary">
         Définir la garde
     </a>
 </div>
+{{$pharmacie}}
 <table class="table table-stripad">
     <thead>
         <tr>
@@ -34,10 +36,7 @@
                             <button class="btn btn-success" title="Modifier la ligne">
                                <i class="fas fa-fw fa-check"></i>
                             </button>
-                        </form>   
-                        <a href="{{ route('admin.gardes.garde', $garde)}}" class="btn btn-primary" title="Editer la période de garde">
-                            <i class="fas fa-fw fa-plus"></i>
-                        </a>                 
+                        </form>                   
                     </div>
                 </td>
             </tr>

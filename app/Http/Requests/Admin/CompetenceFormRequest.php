@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Page;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,10 +24,11 @@ class CompetenceFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'secteur'=>['required'],
-            'domaine'=>['required'],
-            'libelle'=>['required','min:5'],
-            'description'=>['required'],
+            'secteur' =>['required'],
+            'libelle' =>['required','min:5'],
+            'description' =>['required'],
+            'photo' => ['image', 'max:2000'],
+            'acteur_id' => ['required'],
         ];
     }
 }

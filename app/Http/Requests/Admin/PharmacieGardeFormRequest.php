@@ -24,11 +24,10 @@ class PharmacieGardeFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'pharmacie' => ['required'],
             'debut' => ['required', 'date'],
             'fini' => ['required', 'date'],
-            'responsable' => ['required', 'min:2'],
-            'etat' => ['required'],
+            'responsable' => [],
+            'status' => [],
         ];
     }
 }

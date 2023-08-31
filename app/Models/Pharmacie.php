@@ -20,4 +20,8 @@ class Pharmacie extends Model
     public function bons(){
         return $this->belongsToMany(Bon::class);
     }
+
+    public function gardes(){
+        return $this->hasMany(PharmacieGarde::class);
+    }
 }

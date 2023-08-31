@@ -39,7 +39,7 @@ class DeclarationController extends Controller
         $declaration->type = $request->input('_type');
         $declaration->slug = Str::slug(($request->input('_type').' de '.$request->input('nom')),'-');
         $declaration->status = 0;
-        $declaration->user_id = $request->input('_user_id');
+        $declaration->user_id = \Illuminate\Support\Facades\Auth::user()->id;
         $declaration->save();
         if ($request->input('_type') == "naissance") {
             $naissance = $request->input();
@@ -49,7 +49,7 @@ class DeclarationController extends Controller
             $declaration->decede()->create($decede);
         }
         
-        return to_route('declaration.index')->with('success', 'Cet enrégistrement a bien été créé.');
+        return to_route('home')->with('success', 'Cet enrégistrement a bien été créé.');
     }
 
 }

@@ -12,6 +12,7 @@ class Proposition extends Model
 
     protected $fillable = [
         'libelle',
+        'code_activation',
         'competence',
         'detail',
         'photos',

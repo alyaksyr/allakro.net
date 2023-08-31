@@ -10,10 +10,13 @@ class PharmacieGarde extends Model
     use HasFactory;
 
     protected $fillable= [
-        'pharmacie',
         'debut',
         'fini',
         'responsable',
         'status',
     ];
+
+    public function pharmacie(){
+        return $this->belongsTo(Pharmacie::class);
+    }
 }

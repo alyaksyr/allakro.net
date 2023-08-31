@@ -1,6 +1,4 @@
-
-
-    <form action="{{route($acteur->exists ? 'admin.acteurs.update' : 'admin.acteurs.store', $acteur)}}" method="post">
+<form action="{{route($acteur->exists ? 'admin.acteurs.update' : 'admin.acteurs.store', $acteur)}}" method="post">
 
         @csrf 
 
@@ -12,10 +10,11 @@
             @include('shared.input', ['class' => 'col-12', 'label' => 'Nom & prénoms', 'name' => 'nom', 'type' => 'text', 'value' => $acteur->nom])
         </div>
         <div class="row">
-            @include('shared.input', ['class' => 'col', 'label' => 'Lieu dee naissance', 'name' => 'lieunais', 'type' => 'text', 'value' => $acteur->lieunais])
+            @include('shared.input', ['class' => 'col', 'label' => 'Lieu de naissance', 'name' => 'lieunais', 'type' => 'text', 'value' => $acteur->lieunais])
             @include('shared.select', [
                 'default' => 'Choisir la tranche d\'age',
                 'class' => 'col',
+                'label' => 'Tranche d\'age', 
                 'name' => 'age', 
                 'options' => $ages,
                 'value' => $acteur->age]

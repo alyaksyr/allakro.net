@@ -5,11 +5,11 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ route('declaration.store', $decede) }}" method="post">
+    <form action="{{ route('compte.declaration.store', $decede) }}" method="post">
 
         @csrf 
         @method('post')
-        <input type="text" id="_user_id" name="_user_id", hidden value="1">
+        <input type="text" id="_user_id" name="_user_id", hidden value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
         <input type="text" id="_type" name="_type", hidden value="deces">
         <div class="row">
             @include('shared.input', ['class' => 'col', 'label' => 'Nom et prénoms du décédé', 'name' => 'nom', 'type' => 'text', 'value' => $decede->nom])

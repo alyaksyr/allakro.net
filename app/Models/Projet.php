@@ -5,11 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DomaineActivite extends Model
+class Projet extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'libelle'
+        'libelle',
+        'description',
+        'initiateur',
+        'delai',
+        'datedebut',
+        'datefin',
+        'etat',
     ];
 }

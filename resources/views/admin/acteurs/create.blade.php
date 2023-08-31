@@ -4,7 +4,7 @@
 
 
 @section('content')
-<div class="container">
-    @include('admin.acteurs.form')
-</div>
+
+    @include('shared.forms.acteur')
+
 @endsection

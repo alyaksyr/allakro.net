@@ -15,8 +15,15 @@
     <link href="{{ URL::asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet"> 
     <link href="{{ URL::asset('tom-select/css/tom-select.css') }}" rel="stylesheet"> 
+
+    
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('popper/popper.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('tom-select/js/tom-select.js')}}"></script>
+ 
     
 </head>
-<body>
-<body>
+<body class="layout-fixed">
     <div id="wrapper" class="wrapper">

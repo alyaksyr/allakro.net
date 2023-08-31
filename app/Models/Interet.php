@@ -13,6 +13,7 @@ class Interet extends Model
         'domaine',
         'libelle',
         'description',
+        'acteur_id',
     ];
 
     public function acteur(){

@@ -13,7 +13,7 @@ class InteretFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class InteretFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'domaine' =>['required'],
+            'libelle' =>['required'],
+            'description' =>['required'],
+            'acteur_id' => ['required'],
         ];
     }
 }

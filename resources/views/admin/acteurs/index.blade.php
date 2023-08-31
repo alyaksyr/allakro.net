@@ -31,13 +31,24 @@
                 <td>{{ $acteur->niveau }}</td>
                 <td>
                     <div class="d-flex gap-2 w-100 justify-content-end">
-                        <a href="{{ route('admin.acteurs.edit', $acteur)}}" class="btn btn-primary">Editer</a>
+                        <a href="{{ route('admin.acteurs.show', $acteur)}}">
+                            <span title="Voir le profil de l'acteur" class="btn btn-primary btn-sm">
+                                <i class="fas fa-fw fa-eye"></i>
+                            </span>
+                        </a>
+                        <a href="{{ route('admin.acteurs.edit', $acteur)}}">  
+                            <span title="Modifier les informations personnelles de l'acteur" class="btn btn-warning btn-sm">
+                               <i class="fas fa-fw fa-edit"></i>
+                            </span>
+                        </a> 
                         <form action="{{ route('admin.acteurs.destroy', $acteur)}}" method="post">
                             @csrf    
                             @method('delete')    
 
-                            <button class="btn btn-danger">
-                                Supprimer
+                            <button class="btn btn-danger btn-sm" title="Supprimer la ligne">
+                            <span>
+                                <i class="fas fa-fw fa-trash"></i>
+                            </span>
                             </button>
                         </form>
                     </div>

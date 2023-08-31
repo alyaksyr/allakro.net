@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ActeurFormRequest;
 use App\Models\Acteur;
+use App\Models\Activite;
 use App\Models\Competence;
 use App\Models\DomaineActivite;
+use App\Models\Interet;
 use App\Models\Niveau;
 use App\Models\Secteur;
 use App\Models\TrancheAge;
@@ -20,7 +22,7 @@ class ActeurController extends Controller
     {
         
         return view('admin.acteurs.index', [
-            'acteurs' => Acteur::orderBy('created_at', 'desc')->paginate(25)
+            'acteurs' => Acteur::orderBy('created_at', 'desc')->paginate(10)
         ]);
     }
 
@@ -35,8 +37,8 @@ class ActeurController extends Controller
         $acteur = new Acteur();
         return view('admin.acteurs.create', [
             'acteur' => new Acteur(),
-            'ages' => TrancheAge::pluck('tranche', 'id'),
-            'niveaux' => Niveau::pluck('niveau', 'id'),
+            'ages' => TrancheAge::pluck('tranche', 'tranche'),
+            'niveaux' => Niveau::pluck('niveau', 'niveau'),
         ]);
     }
 
@@ -49,25 +51,35 @@ class ActeurController extends Controller
     public function store(ActeurFormRequest $request)
     {
         $acteur = Acteur::create($request->validated());
-        return to_route('admin.acteurs.index')->with('success', 'L\'acteur à bien été créé !');
+        return to_route('admin.acteurs.show',['acteur' => $acteur])->with('success', 'L\'acteur à bien été créé !');
     }
     /**
      * Show the form for editing the specified resource.
      *
      */
+    public function show($acteur)
+    {
+        $user = \Illuminate\Support\Facades\Auth::user()->role;
+        return view('admin.acteurs.show', [
+            
+            'competence' => new Competence(),
+            'interet' => new Interet(),
+            'activite' => new Activite(),
+            'acteur' => Acteur::find($acteur),
+            'competences' => Acteur::find($acteur)->competences()->orderBy('created_at', 'desc')->paginate(25),
+            'interets' => Acteur::find($acteur)->interets()->orderBy('created_at', 'desc')->paginate(25),
+            'activites' => Acteur::find($acteur)->activites()->orderBy('created_at', 'desc')->paginate(25),
+        ]);
+    }
+
+
     public function edit(Acteur $acteur)
     {
-        $domaines = DomaineActivite::pluck('libelle', 'libelle');
-        $id = $acteur->id;
-        $acteurs = Acteur:: find($id);
-        $competence = $acteurs->competence;
-        return view('admin.acteurs.show', [
+        return view('admin.acteurs.create', [
             'acteur' => $acteur,
             'ages' => TrancheAge::pluck('tranche', 'tranche'),
             'niveaux' => Niveau::pluck('niveau', 'niveau'),
             'secteurs' => Secteur::pluck('libelle', 'libelle'),
-            'domaines' => $domaines,
-            'competences' => $competence,
         ]);
     }
 
@@ -78,7 +90,7 @@ class ActeurController extends Controller
     public function update(ActeurFormRequest $request, Acteur $acteur)
     {
         $acteur->update($request->validated());
-        return to_route('admin.acteurs.index')->with('success', 'L\'acteur à bien été modifié !');
+        return to_route('admin.acteurs.show', ['acteur' => $acteur])->with('success', 'L\'acteur à bien été modifié !');
     }
 
     /**

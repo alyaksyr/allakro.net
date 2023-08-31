@@ -1,18 +1,18 @@
 
 @extends('admin.layout')
 
-@section('title', $garde->exists ? 'Editer une garde' : 'Créer une garde')
+@section('title', 'Definir la période de garde')
 
 @section('content')
 
-<form action="{{route($garde->exists ? 'admin.gardes.update' : 'admin.gardes.store', $garde)}}" method="post">
+<form action="{{route('admin.gardes.store', $garde, $pharmacie)}}" method="post">
 
     @csrf 
-    @method($garde->exists ? 'put':'post')
+    @method('post')
 
     <div class="row">
         <input type="text" id="pharmacie_id" name="pharmacie_id" hidden value="{{ $pharmacie->id}}">
-        @include('shared.input', ['class' => 'col', 'label' => 'Nom de la pharmacie', 'type' => 'text', 'value' => $pharmacie->nom])
+        @include('shared.input', ['class' => 'col', 'label' => 'Nom de la pharmacie', 'type' => 'text', 'value' => $pharmacie->nom, 'disabled' => true])
         <div class="col row">
             @include('shared.input', ['class' => 'col', 'label' => 'Nom du pharmacien', 'name' => 'responsable', 'type' => 'text', 'value' => $garde->responsable])
         </div>
@@ -25,11 +25,7 @@
     </div>
     <div>
         <button class="btn btn-primary">
-            @if($garde->exists)
-                Modifer
-            @else
-                Créer
-            @endif
+             Définir
         </button>
     </div>
 </form>

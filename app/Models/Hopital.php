@@ -13,6 +13,7 @@ class Hopital extends Model
         'nom',
         'type',
         'contact',
+        'responsable',
         'address',
     ];
 
@@ -20,7 +21,7 @@ class Hopital extends Model
         return $this->belongsToMany(Bon::class);
     }
 
-    public function offres(){
-        return $this->belongsToMany(Offre::class);
+    public function services(){
+        return $this->hasMany(ServiceHopital::class);
     }
 }

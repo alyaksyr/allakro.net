@@ -29,8 +29,8 @@ class HopitalFormRequest extends FormRequest
             'type' => ['required',Rule::in(['Public','Privé'])],
             'contact' => ['required', 'min:2'],
             'address' => ['required'],
-            'offres' => ['array', 'exists:offres,id', 'required'],
             'bons' => ['array', 'exists:bons,id'],
+            'responsable' =>[],
         ];
     }
 }

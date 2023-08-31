@@ -1,11 +1,11 @@
 @extends('admin.layout')
 
-@section('title', 'Les services médicaux')
+@section('title', 'Les informations sur le centre de santé')
 
 @section('content')
 <div class="d-flex mb-2 justify-content-end align-item-end">
-    <a href="{{ route('admin.services.create')}}" class="btn btn-primary">
-        Ajouter un service
+    <a href="{{ route('admin.services.create', ["hopital_id" => $hopital->id])}}" class="btn btn-primary">
+        Ajouter un service médical
     </a>
 </div>
 <table class="table table-stripad">
@@ -16,13 +16,13 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($services as $service)
+        @foreach($hopital->services as $service)
             <tr>
-                <td>{{ $service->libelle }}</td>                
+                <td>{{ $service->libelle }}</td>
                 <td>
                     <div class="d-flex gap-2 w-100 justify-content-end">
-                        <a href="{{ route('admin.services.edit', $service)}}"> 
-                            <span class="btn btn-primary" title="Editer la ligne">
+                        <a href="{{ route('admin.services.edit', $service)}}">  
+                            <span title="Modifier la ligne" class="btn btn-warning btn-sm">
                                <i class="fas fa-fw fa-edit"></i>
                             </span>
                         </a>   
@@ -31,9 +31,9 @@
                             @csrf    
                             @method('delete')    
 
-                            <button class="btn btn-danger" title="Supprimer la ligne">
+                            <span class="btn btn-danger btn-sm" title="Supprimer la ligne">
                                 <i class="fas fa-fw fa-trash"></i>
-                            </button>
+                            </span>
                         </form>
                     </div>
                 </td>

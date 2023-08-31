@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\HopitalFormRequest;
 use App\Models\Bon;
 use App\Models\Hopital;
 use App\Models\Offre;
+use App\Models\ServiceHopital;
 use Illuminate\Http\Request;
 
 class HopitalController extends Controller
@@ -28,7 +29,6 @@ class HopitalController extends Controller
         $hopital = new Hopital();
         return view('admin.hopitals.form', [
             'hopital' => new Hopital(),
-            'offres' => Offre::pluck('libelle','id'),
             'bons' => Bon::pluck('libelle','id'),
         ]);
     }
@@ -42,10 +42,20 @@ class HopitalController extends Controller
     public function store(HopitalFormRequest $request)
     {
         $hopital = Hopital::create($request->validated());
-        $hopital->offres()->sync($request->validated('offres'));
+        // $hopital->offres()->sync($request->validated('offres'));
         $hopital->bons()->sync($request->validated('bons'));
         return to_route('admin.hopitals.index')->with('success', 'L\'enrégistement a bien été créé !');
     }
+
+    public function show($hopital)
+    {
+        return view('admin.hopitals.show', [
+            'service' => new ServiceHopital(),
+            'hopital' => Hopital::find($hopital),
+            'services' => Hopital::find($hopital)->services()->orderBy('created_at', 'desc')->paginate(25)
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -54,7 +64,6 @@ class HopitalController extends Controller
     {
         return view('admin.hopitals.form', [
             'hopital' => $hopital,
-            'offres' => Offre::pluck('libelle','id'),
             'bons' => Bon::pluck('libelle','id'),
         ]);
     }
@@ -66,7 +75,7 @@ class HopitalController extends Controller
     public function update(HopitalFormRequest $request, Hopital $hopital)
     {
         $hopital->update($request->validated());
-        $hopital->offres()->sync($request->validated('offres'));
+        // $hopital->offres()->sync($request->validated('offres'));
         $hopital->bons()->sync($request->validated('bons'));
         return to_route('admin.hopitals.index')->with('success', 'L\'enrégistement a bien été modifié !');
     }

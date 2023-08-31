@@ -19,17 +19,31 @@
 <div class="row">
     @include('shared.input', ['class' => 'col', 'label' => 'Contact', 'name' => 'contact', 'type' => 'text', 'value' => $hopital->contact])
     <div class="col row">
-        @include('shared.select', ['class' => 'col','label' => 'Type de centre de santé','name' => 'type', 'options'=>[''=>'Choisir le type de centre de santé','Public'=>'Public', 'Prive'=>'Privé'], 'value' => $hopital->type])
+        @include('shared.select', [
+            'class' => 'col',
+            'default'=>'Choisir le type de centre de santé',
+            'label' => 'Type de centre de santé',
+            'name' => 'type', 
+            'options'=>['Public'=>'Public', 'Prive'=>'Privé'], 
+            'value' => $hopital->type
+        ])
     </div>
 </div>
 <div class="row">
     @include('shared.input', ['class' => 'col', 'label' => 'Situation du centre de santé', 'name' => 'address', 'type' => 'textarea', 'value' => $hopital->address])
 </div>
 <div class="row">
-    @include('shared.select', ['class' => 'col','label' => 'Services offerts','name' => 'offres', 'options' => $offres, 'value' => $hopital->offres()->pluck('id'), 'multiple'=>true])
+    @include('shared.input', ['class' => 'col','label' => 'Directeur du centre de santé','name' => 'responsable', 'type' => 'text', 'value' => $hopital->responsable])
 </div>
 <div class="row">
-    @include('shared.select', ['class' => 'col','label' => 'Bons acceptés','name' => 'bons', 'options' => $bons, 'value' => $hopital->bons()->pluck('id'), 'multiple'=>true])
+    @include('shared.select', [
+        'class' => 'col',
+        'label' => 'Bons acceptés',
+        'name' => 'bons', 
+        'options' => $bons, 
+        'value' => $hopital->bons()->pluck('id'), 
+        'multiple'=>true
+    ])
 </div>
 <div>
     <button class="btn btn-primary">

@@ -29,28 +29,33 @@
                 <td>
                     <form action="{{ route('admin.declarations.update', $declaration)}}" method="post">
                         @php
-                            $status = ($declaration->status==1) ? "Désactivée":"Activée"
+                            $status = $declaration->status==1;
                         @endphp
+        
                         @csrf 
                         @method('put')
-                        @include('shared.checkbox', [
-                            'class' => 'col', 
-                            'label' => $status, 
-                            'name' => 'status', 
-                        ])
-                        <button class="btn btn-primary">
-                            <i class="fas fa-fw fa-check"></i>
-                        </button>
+                        @if($status==1)
+                            <input type="checkbox" class="btn-check btn-sm" disabled id="btn-check-status" autocomplete="off">
+                            <label for="btn-check-status" class="btn btn-success btn-sm">Activé</label>
+                        @else
+                            <input type="text" id="status" name="status" value="1" hidden>
+                            <input type="checkbox" class="btn-check btn-sm" checked id="btn-check-status" autocomplete="off">
+                            <button for="btn-check-status" class="btn btn-default btn-sm" title="Activie la déclaration">Désactivé</button>
+                        @endif
                     </form>
                 </td>
                 <td>
                     <div class="d-flex gap-2 w-100 justify-content-end">  
-                        <a href="{{ route('admin.decedes.edit', $declaration->decede)}}" class="btn btn-primary">Editer</a>        
+                        <a href="{{ route('admin.decedes.edit', $declaration->decede)}}">
+                            <span class="btn btn-primary btn-sm">
+                               <i class="fas fa-fw fa-edit"></i>
+                            </span>
+                        </a>        
                         <form action="{{ route('admin.declarations.destroy', $declaration)}}" method="post">
                             @csrf    
                             @method('delete')    
 
-                            <button class="btn btn-danger">
+                            <button class="btn btn-danger btn-sm">
                                 <i class="fas fa-fw fa-trash"></i>
                             </button>
                         </form>

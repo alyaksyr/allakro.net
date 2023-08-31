@@ -26,11 +26,13 @@ class ActiviteFormRequest extends FormRequest
     {
         return [
             'secteur'=>['required'],
-            'domaine'=>['required'],
             'libelle'=>['required','min:5'],
             'description'=>['required'],
             'contact'=>['required','min:10'],
             'address'=>['required','min:10'],
+            'photo' => ['image', '2000'],
+            'email' => [],
+            'acteur_id' => ['required'],
         ];
     }
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PharmacieGardeFormRequest;
+use App\Models\Pharmacie;
+use App\Models\PharmacieGarde;
 use Illuminate\Http\Request;
 
 class PharmacieGardeController extends Controller
@@ -22,9 +25,15 @@ class PharmacieGardeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        // dd(Pharmacie::find($$id));
+        $garde = new PharmacieGarde();
+        // $pahamecie = $request->pharmacie;
+
+        return view('admin.pharmacies.garde', [
+            'garde' => new PharmacieGarde(),
+        ]);
     }
 
     /**
@@ -33,9 +42,12 @@ class PharmacieGardeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PharmacieGardeFormRequest $request, Pharmacie $pharmacie)
     {
-        //
+        $pharmacie = Pharmacie::find($request->input('pharmacie_id'));
+        $garde = $request->validated();
+        $pharmacie->gardes()->create($garde);
+        return to_route('admin.pharmacies.index')->with('success', 'L\'enrégistement a bien été créé !');
     }
 
     /**

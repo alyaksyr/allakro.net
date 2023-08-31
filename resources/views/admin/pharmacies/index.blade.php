@@ -26,14 +26,24 @@
                 
                 <td>
                     <div class="d-flex gap-2 w-100 justify-content-end">
+
+                        <a href="{{ route('admin.pharmacies.show', $pharmacie)}}" class="btn btn-primary btn-sm" title="Editer la période de garde">
+                            <i class="fas fa-fw fa-plus"></i>
+                        </a>  
+
                         <a href="{{ route('admin.pharmacies.edit', $pharmacie)}}">   
-                            <span title="Modifier la ligne" class="btn btn-primary">
+                            <span title="Modifier la ligne" class="btn btn-warning btn-sm">
                                <i class="fas fa-fw fa-edit"></i>
                             </span>
-                        </a>   
-                        <a href="{{ route('admin.pharmacies.garde', $pharmacie)}}" class="btn btn-success" title="Editer la période de garde">
-                            <i class="fas fa-fw fa-plus"></i>
-                        </a>                 
+                        </a> 
+                        <form action="{{ route('admin.pharmacies.destroy', $pharmacie)}}" method="post">
+                            @csrf    
+                            @method('delete')    
+
+                            <span class="btn btn-danger btn-sm" title="Supprimer la ligne">
+                                <i class="fas fa-fw fa-trash"></i>
+                            </span>
+                        </form>            
                     </div>
                 </td>
             </tr>

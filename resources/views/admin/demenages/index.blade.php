@@ -32,14 +32,14 @@
             <td>
                 <div class="d-flex gap-2 w-100 justify-content-end">
                     <a href="{{ route('admin.demenages.edit', $declaration->demenage)}}">   
-                        <span class="btn btn-primary" title="Editer la ligne">
-                            <i class="fas fa-fw fa-check"></i>
+                        <span class="btn btn-primary btn-sm" title="Editer la ligne">
+                            <i class="fas fa-fw fa-edit"></i>
                         </span>
                     </a>                  
                     <form action="{{ route('admin.declarations.destroy', $declaration)}}" method="post">
                         @csrf    
                         @method('delete')    
-                        <button class="btn btn-danger" title="Supprimer la ligne">
+                        <button class="btn btn-danger btn-sm" title="Supprimer la ligne">
                             <i class="fas fa-fw fa-trash"></i>
                         </button>
                     </form>
